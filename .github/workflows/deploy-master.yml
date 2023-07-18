@@ -41,7 +41,7 @@ jobs:
         with:
           switches: -avzr --delete
           path: .
-          remote_path: /var/www/l2-interlude-craft-calculator
+          remote_path: /var/www/vhosts/l2calculator.com/httpdocs/
           remote_host: ${{ secrets.DEPLOY_HOST }}
           remote_user: ${{ secrets.DEPLOY_USER }}
           remote_key: ${{ secrets.DEPLOY_KEY }}
