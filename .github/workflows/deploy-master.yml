@@ -15,11 +15,15 @@ jobs:
           username: ${{ secrets.DEPLOY_USER }}
           key: ${{ secrets.DEPLOY_KEY }}
           script: |
+            sudo rm -rf /var/www/vhosts/l2calculator.com/httpdocs &&
+            sudo mkdir /var/www/vhosts/l2calculator.com/httpdocs &&
+            sudo chown -R www-data:www-data /var/www/vhosts/l2calculator.com/httpdocs &&
+            sudo chmod -R 775 /var/www/vhosts/l2calculator.com/httpdocs &&
             cd /var/www/vhosts/l2calculator.com/httpdocs &&
-            sudo rm -rf /var/www/vhosts/l2calculator.com/httpdocs/* &&
-            git clone git@github.com:Babilounet/l2-interlude-craft-calculator.git . &&
-            git fetch &&
-            git pull &&
+            sudo git clone git@github.com:Babilounet/l2-interlude-craft-calculator.git . &&
+            sudo git fetch &&
+            sudo git pull &&
+            sudo chown -R www-data:www-data /var/www/vhosts/l2calculator.com/httpdocs &&
+            sudo su - www-data &&
             composer update &&
-            composer install &&
-            sudo chown -R www-data:www-data /var/www/vhosts/l2calculator.com/httpdocs
+            composer install
