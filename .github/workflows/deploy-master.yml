@@ -24,6 +24,5 @@ jobs:
             sudo git fetch &&
             sudo git pull &&
             sudo chown -R www-data:www-data /var/www/vhosts/l2calculator.com/httpdocs &&
-            sudo su - www-data &&
-            composer update &&
-            composer install
+            sudo -u www-data composer update &&
+            sudo -u www-data composer install
